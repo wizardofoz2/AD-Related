@@ -8,7 +8,7 @@ Import-Module MSOnline
 $msolCred = Get-Credential
 Connect-MsolService –Credential $msolCred
 
-$upn = "jedwards@kineticsnoise.com"
+$upn = ""
 $User = Get-MsolUser -UserPrincipalName $upn -ErrorAction SilentlyContinue
 If ($User -ne $Null) { 
 "User exists in Azure AD" 
@@ -31,7 +31,7 @@ $plan = Get-MsolAccountSku | Where {$_.SkuPartNumber -eq "O365_business_essentia
 $plan.ServiceStatus
 Get-MsolSubscription | Select SkuPartNumber, Status, TotalLicenses
 
-Search-ADAccount  –PasswordNeverExpires –SearchBase “ou=kinetics,DC=domain-1,DC=local” | Select-Object name, LastLogonDate, DistinguishedName | export-csv C:\nonexpiringusers_external_ou_date.csv –noclobber
+Search-ADAccount  –PasswordNeverExpires –SearchBase “DC=local” | Select-Object name, LastLogonDate, DistinguishedName | export-csv C:\nonexpiringusers_external_ou_date.csv –noclobber
 
 
 Get-ChildItem -Recurse "C:\Private" | Where { $_.PSIsContainer } | Select Name,FullName
