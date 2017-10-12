@@ -8,7 +8,7 @@ $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri ht
 
 Import-PSSession $Session
 
-Get-Mailbox -Identity pdodd@kineticsnoise.com |fl
+Get-Mailbox -Identity  |fl
 
 
 $assoc =New-Object psobject -Property @{
