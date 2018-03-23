@@ -1,1 +1,0 @@
-﻿Add-VpnConnection -Name "KNC" -ServerAddress "vpn.kineticsnoise.com" -TunnelType "L2tp" -EncryptionLevel "optional" -AuthenticationMethod PAP -AllUserConnection -L2tpPsk "KNC" -Force -RememberCredential -PassThru
